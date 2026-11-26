@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "entry": "contracts/Parley.sol",
+      "file": "contracts/contracts/Parley.sol",
+      "referenceSha256": "4e905c893b9b424533f5f0bdcdf6d4b7434772ba572b4f2f135daa7ae5ab26e7",
+      "currentSha256": "f70dc603e80afe0a72db3968160ab020d5cc0efc82b5e50b51bdbd4f4b201c21",
+      "change": "TOKEN-REQUEST-01",
+      "description": "Reject token-request net underdelivery without changing the ABI or grossing up the debit.",
+      "documentation": "docs/payment-request-fix-2026-11-23.md",
+      "independentReview": "pending"
+    },
+    {
+      "entry": "helper/envelope.mjs",
+      "file": "helper/src/envelope.mjs",
+      "referenceSha256": "a4dcb8da6428b8116d5271cae5e700eb49e3eb252e741698c0113678c7147c0a"
+    },
+    {
+      "entry": "test/parley.test.js",
+      "file": "contracts/test/parley.test.js",
+      "referenceSha256": "8710efdd6dbf68736f9dc5b1135c7442621129b56e70858ae3559603a0babdfc"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "mode": "staging",
+  "sourceSnapshotSha256": "2f126e875e00320d7bbf069ea291533d3006a34f79d148e2d51bb7f026eeaca7",
+  "config": {
+    "chainId": 56,
+    "contract": null,
+    "registry": "0x60b9262456de011f7d15a54cdd8c48baaa8b022f",
+    "deploymentBlock": null,
+    "multicall": "0xcA11bde05977b3631167028862bE2a173976CA11",
+    "rpcs": [
+      "https://bsc-dataseed.binance.org",
+      "https://bsc-dataseed1.bnbchain.org",
+      "https://bsc-rpc.publicnode.com"
+    ],
+    "site": "https://parley-staging.pages.dev",
+    "resident": null,
+    "excluded": [],
+    "tokens": {
+      "USDT": "0x55d398326f99059fF775485246999027B3197955",
+      "USDC": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d"
+    }
+  },
+  "files": {
+    "_headers": {
+      "bytes": 708,
+      "sha256": "645ae04532943bfeb7c087ff7c8c60c68418f5b47ff0d966ddc5641b432d7fd4",
+      "mutable": false
+    },
+    "_redirects": {
+      "bytes": 64,
+      "sha256": "fff3959f96e16f14f73fc1f9c4af521193d511614c602c3bea180f855b289868",
+      "mutable": false
+    },
+    "index.html": {
+      "bytes": 1604,
+      "sha256": "ebb30485c170230923f273cb604e8707cf2f871097c5ea475403206bbd4f8ff9",
+      "mutable": false
+    },
+    "404.html": {
+      "bytes": 334,
+      "sha256": "423b4def4463ba1d7ff21879b737a08b0bf3e26f273fad62fda639655a848aae",
+      "mutable": false
+    },
+    "style.css": {
+      "bytes": 12413,
+      "sha256": "be6a9146645727c10651a362765337cf900a6f062502df36578e3d1411b654f5",
+      "mutable": false
+    },
+    "config.json": {
+      "bytes": 542,
+      "sha256": "26f2bbb6394577948c98e409a95ea890a5edcd9882f0bb570a4118efe185ad9e",
+      "mutable": false
+    },
+    "stats.json": {
+      "bytes": 5,
+      "sha256": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed",
+      "mutable": false
+    },
+    "assets/app.js": {
+      "bytes": 386096,
+      "sha256": "ad00ba29589dba3f075a8bc80a6aad6adfcd3e4abe58a2cecacacf9be708dd3a",
+      "mutable": false
+    },
+    "assets/parley-stamp.svg": {
+      "bytes": 401,
+      "sha256": "daa6130ccad150ef8b8c78ed476cc1bfb0eb1d68e90f129cf1326c830c3a4067",
+      "mutable": false
+    },
+    "demo.webm": {
+      "bytes": 776148,
+      "sha256": "8a081419d8a34e038d0fd3006a499d8494da644fb1eec550406a48d2e5d7cdc5",
+      "mutable": false
+    },
+    "skill/SKILL.md": {
+      "bytes": 12766,
+      "sha256": "dc4edc8b75e22faf7562c3d80794a86c38f7b3e2e5b1f8209cd4b2e81edb7943",
+      "mutable": false
+    },
+    "skill/parley.mjs": {
+      "bytes": 810885,
+      "sha256": "1f8fad0b84172ef991134d2af8d04142437a82f8b3cc8a36336298d29795561c",
+      "mutable": false
+    },
+    "skill/parley.zip": {
+      "bytes": 178711,
+      "sha256": "511272c99efd76488f5ca00a7f4048984697745b8620455250c4bd5e4d526c45",
+      "mutable": false
+    },
+    "skill/SHA256SUMS": {
+      "bytes": 229,
+      "sha256": "0bdd67445a06be2a5e2e8e9cf5890b1a4661a468b65bcf27632cd68007e1a208",
+      "mutable": false
+    }
+  },
+  "notes": {
+    "realWalletAcceptance": false,
+    "cleanMachineSkillInstall": false,
+    "productionRelease": false,
+    "fictionalVideo": true,
+    "scope": "Static artifact manifest only; not audit, deployment, live hosting or installation evidence"
+  }
+}

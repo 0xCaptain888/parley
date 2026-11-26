@@ -1,0 +1,398 @@
+{
+  "startedAt": "2026-11-26T12:30:27.441Z",
+  "snapshotSha256": "91c9ee119c4636c911e0fe08b3dead402fc2dcc3137a930fe650100906696c91",
+  "sourceHash": "f70dc603e80afe0a72db3968160ab020d5cc0efc82b5e50b51bdbd4f4b201c21",
+  "status": "passed",
+  "phase": "completed",
+  "mainnetBroadcast": false,
+  "walletAccess": false,
+  "tokenBalancesPatched": false,
+  "productionRelease": false,
+  "preflight": {
+    "checkedAt": "2026-11-26T12:30:27.729Z",
+    "status": "passed",
+    "forkBlock": 135845447,
+    "actors": [
+      "0xb550e4cc7271bdbc722427057003410aec9fc2f4",
+      "0x0027d103a0fe819486314fff6c7933bb0a2013f2"
+    ],
+    "checks": [
+      {
+        "name": "BSC source chain",
+        "status": "passed"
+      },
+      {
+        "name": "fixed block and local EVM profile",
+        "status": "passed"
+      },
+      {
+        "name": "deployed registry and token code",
+        "status": "passed"
+      },
+      {
+        "name": "two distinct registered holders",
+        "status": "passed"
+      },
+      {
+        "name": "real token decimals and starting balances",
+        "status": "passed"
+      },
+      {
+        "name": "fixed block remained canonical",
+        "status": "passed"
+      }
+    ],
+    "codeHashes": {
+      "registry": {
+        "address": "0x60b9262456de011f7d15a54cdd8c48baaa8b022f",
+        "keccak256": "0xc4006e6e6ffaaf6996116617392beabe4f5f0a0795841322f91c2ceac34d6ace"
+      },
+      "usdt": {
+        "address": "0x55d398326f99059fF775485246999027B3197955",
+        "keccak256": "0x97a48aa4c129657440dafdacd4c836389734d28cc4a0ca7403e68da660a74a59"
+      },
+      "usdc": {
+        "address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+        "keccak256": "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914"
+      }
+    },
+    "mainnetBroadcast": false,
+    "walletAccess": false,
+    "scope": "Read-only prerequisite checks, not a local fork flow or consensus replay",
+    "forkBlockHash": "0x790a0ada175c16c021509d70805003ef74cc67e79a41934036c837ce2c3ac42f",
+    "blockTimestamp": "1795695529",
+    "localEvm": "Ethereum Osaka approximation; not BSC consensus replay",
+    "handles": [
+      "btc123456",
+      "liudoudou"
+    ],
+    "startingBalances": {
+      "aUsdc": "1003781395552640116",
+      "minimumAUsdc": "20000000000000000",
+      "bUsdt": "14812031891816582835",
+      "minimumBUsdt": "30000000000000000"
+    },
+    "completedAt": "2026-11-26T12:30:30.250Z"
+  },
+  "deployment": {
+    "address": "0x2e39B31f6CbB0E71501a2B0c97f97458e5107638",
+    "transactionHash": "0x6a0e8f810fcb2d2d8c27d0d966cd2621a9e38808592fffe1004279028c893945",
+    "block": 135845449,
+    "runtimeKeccak256": "0xba9b93ecde9622c16d3fa85525ff5401ef7024c8cb6c02a3518ef59bd49e8d16"
+  },
+  "environment": "local Hardhat fork, real registry/USDT/USDC; native balances locally funded",
+  "checkedAt": "2026-11-26T12:31:01.630Z",
+  "sourceChainId": 56,
+  "forkBlock": 135845447,
+  "forkBlockHash": "0x790a0ada175c16c021509d70805003ef74cc67e79a41934036c837ce2c3ac42f",
+  "localEndBlock": 135845497,
+  "canonicalEndBlockHash": "0x790a0ada175c16c021509d70805003ef74cc67e79a41934036c837ce2c3ac42f",
+  "codeHashes": {
+    "registry": {
+      "address": "0x60b9262456de011f7d15a54cdd8c48baaa8b022f",
+      "keccak256": "0xc4006e6e6ffaaf6996116617392beabe4f5f0a0795841322f91c2ceac34d6ace"
+    },
+    "usdt": {
+      "address": "0x55d398326f99059fF775485246999027B3197955",
+      "keccak256": "0x97a48aa4c129657440dafdacd4c836389734d28cc4a0ca7403e68da660a74a59"
+    },
+    "usdc": {
+      "address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+      "keccak256": "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914"
+    }
+  },
+  "actors": [
+    "0xb550e4cc7271bdbc722427057003410aec9fc2f4",
+    "0x0027d103a0fe819486314fff6c7933bb0a2013f2"
+  ],
+  "tokenDecimals": {
+    "usdt": 18,
+    "usdc": 18
+  },
+  "localEvm": "Ethereum Osaka approximation; not BSC consensus replay",
+  "parleyCreationCodeKeccak256": "0xfd18db8ed542d802032b70fa888541dc7a60e0e6919b37c593e7dc9cd1d9314d",
+  "checks": [
+    {
+      "name": "fresh deployment and minimum real-token starting balances",
+      "status": "passed"
+    },
+    {
+      "name": "A: mailbox public key registration and public packet creation",
+      "status": "passed"
+    },
+    {
+      "name": "A: one claim opens mailbox and delivers exact BNB after gas",
+      "status": "passed"
+    },
+    {
+      "name": "A: duplicate claim rejected without changing packet or member count",
+      "status": "passed"
+    },
+    {
+      "name": "C: encrypted free reply preserves inbox bytes and authenticated context",
+      "status": "passed"
+    },
+    {
+      "name": "C: block/unblock revokes free contact and rejects unstamped messages",
+      "status": "passed"
+    },
+    {
+      "name": "C: first-contact stamp escrow and reply release exact BNB",
+      "status": "passed"
+    },
+    {
+      "name": "C: key rotation keeps old ciphertext readable and authenticates new mail",
+      "status": "passed"
+    },
+    {
+      "name": "B: directed packet delivered to inbox and claimed exactly once",
+      "status": "passed"
+    },
+    {
+      "name": "D: request creation stores encrypted memo but moves no tokens",
+      "status": "passed"
+    },
+    {
+      "name": "D: exact approval, direct request settlement and zero remaining allowance",
+      "status": "passed"
+    },
+    {
+      "name": "D: request decline and cancellation move no tokens",
+      "status": "passed"
+    },
+    {
+      "name": "E: named token offer escrows exactly the maker deposit",
+      "status": "passed"
+    },
+    {
+      "name": "E: counteroffer refunds original and deposits reverse asset atomically",
+      "status": "passed"
+    },
+    {
+      "name": "E: underpaid acceptance leaves reverse offer and escrow unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "E: reverse acceptance settles exact bilateral token deltas once",
+      "status": "passed"
+    },
+    {
+      "name": "E: public cancellation and named decline return exact escrow",
+      "status": "passed"
+    },
+    {
+      "name": "pause: prepare independent packets, requests and token exits",
+      "status": "passed"
+    },
+    {
+      "name": "pause: all six new-business entry points reject IsPaused",
+      "status": "passed"
+    },
+    {
+      "name": "pause: claim, request decline/cancel and token decline/cancel remain available",
+      "status": "passed"
+    },
+    {
+      "name": "B/pause: expired packet refunds deliver only remaining principal after gas",
+      "status": "passed"
+    },
+    {
+      "name": "final: no native/token escrow, stamps, pending liabilities or allowances remain",
+      "status": "passed"
+    }
+  ],
+  "transactions": [
+    {
+      "hash": "0x36ed8b5a51fa061365c0efa25dedac6bd7f19e048b3c1d483800337919140692",
+      "block": 135845450
+    },
+    {
+      "hash": "0xb9bf7e96372ab10d19f77bb2b79d94ed948fb047df8ce1f729804bf06515e169",
+      "block": 135845451
+    },
+    {
+      "hash": "0xba0bcd9738bd4af05990577b960a3812e1f3741a27a7ddf69506da6852ce7425",
+      "block": 135845452
+    },
+    {
+      "hash": "0x32394139779d1b77235298a6b796a0311b15a09883ae036b496f67da138c7cd6",
+      "block": 135845453
+    },
+    {
+      "hash": "0x805ea10c57603ad782de4b46c04a295da0fd25a15d8b2a071459085869f62791",
+      "block": 135845454
+    },
+    {
+      "hash": "0x9d3ec2db8907033b7d7c82aded84a2cd6089a9ad93d9304e67d4efee4955074d",
+      "block": 135845455
+    },
+    {
+      "hash": "0xd1300c721aa25093f3eb935849300372e6aecc2e36b893f343d47752bb8d6737",
+      "block": 135845456
+    },
+    {
+      "hash": "0x4298e21cebf0b01ad133e6a4899992e4927feb20e83558c3e31dcc9c1198ad99",
+      "block": 135845457
+    },
+    {
+      "hash": "0xf9207ccb3f55608602a964d34ead7a5569600d65d5180cec5276596625d2af51",
+      "block": 135845458
+    },
+    {
+      "hash": "0xa95806256a17dcfc69cb94b94dc3f14ee11937d4fc5ffce22db4c4aba940d8c6",
+      "block": 135845459
+    },
+    {
+      "hash": "0x022db4c054cee76c9df5e22d5571e4fd44c0f81ffcaac42ee029eff68b0f6f68",
+      "block": 135845460
+    },
+    {
+      "hash": "0x8ca374b37c4fa25ca8b4792633f9c4f5b9b9f3e1a46a79001097a15dd904c10e",
+      "block": 135845461
+    },
+    {
+      "hash": "0x69a9540ed5b06a072e16188bd8915431aa00a4408571690356b095c3f78c6fc1",
+      "block": 135845462
+    },
+    {
+      "hash": "0x4d2c88a82b251278e8be233b36da205f9503897873d0a2ff9d370d8cceb8f6e6",
+      "block": 135845463
+    },
+    {
+      "hash": "0xf80d94471a0f91ddc397adf9d12e03a46fd3a36de9183a2df142d0c2df5ae10a",
+      "block": 135845464
+    },
+    {
+      "hash": "0x8ed1dd0689db4c0c1cb7799404617843ff1c451d6f59384af99225e46800d73d",
+      "block": 135845465
+    },
+    {
+      "hash": "0x14216415c806869af51a9b3ae1481ff350fea53c85dcb63a59bbea3ab4d5bef7",
+      "block": 135845466
+    },
+    {
+      "hash": "0x7d2df4359d8bcf577fdd8ad6bea64e517c9984d54f8512bf3b51ab1cbd1c1817",
+      "block": 135845467
+    },
+    {
+      "hash": "0x493e058e8ff474b91a935510c298c027bf7d12d166da11a48d7cd90722c761a7",
+      "block": 135845468
+    },
+    {
+      "hash": "0xb34e076747ee5e93c5d929c660b40f843d1eb783ee30a39161b7d69f8a7d19d8",
+      "block": 135845469
+    },
+    {
+      "hash": "0x2d9454e636fec1181436ee65e7222749876d2849fa91349f072cd85d0138c132",
+      "block": 135845470
+    },
+    {
+      "hash": "0xa816c3652e4c177092df464ee57464cf32d0732d6ef6351389fc6afd27573737",
+      "block": 135845471
+    },
+    {
+      "hash": "0xb5f7df5bd3109415cbf09f417c8d45beb5ea3b88692d636a7e08c35b80fe1c6b",
+      "block": 135845472
+    },
+    {
+      "hash": "0xa4c00e5af227680196daaa20530f7796c9ef4c34deca2116000b6f59d63329ad",
+      "block": 135845473
+    },
+    {
+      "hash": "0xebaf49c51b5016e79c181ee13962e190b83026cfe370a8ca6796b6e6e9efd225",
+      "block": 135845474
+    },
+    {
+      "hash": "0x79d6474d712f9d4c9d9f744820c1c6398af0b4aaf36ab5930f5cfa71a03513dc",
+      "block": 135845475
+    },
+    {
+      "hash": "0x53a56a2a6f0d12cd8933ea7523765f8db83e48f1188aea5e6eecf62c063c194b",
+      "block": 135845476
+    },
+    {
+      "hash": "0x31ba7cc83a2b2e16f6bafca29bd8098e8598b000f48d7c9fa0a37ddd4f18f912",
+      "block": 135845477
+    },
+    {
+      "hash": "0xf7d3fabb09e491a4b7e6b23f7cf457572422eb4aa219a39bf6542cc5da6b926c",
+      "block": 135845478
+    },
+    {
+      "hash": "0x80a1744b244fcff77673b29b1b597a1b642c7786669955debdd287bf616bc3b3",
+      "block": 135845479
+    },
+    {
+      "hash": "0xdb88d99fc1262a001b899a7e37aead050417003e71357e2b7b0d81a48a978901",
+      "block": 135845480
+    },
+    {
+      "hash": "0x55fb80edbfad26cca7630480d27a153af9180489a77d7c9e70854e796e65a187",
+      "block": 135845481
+    },
+    {
+      "hash": "0x9cccc167ddc22c4c4f8ff3dc4177f56bd6f3005c4d7b268637aaf841f29aa5ae",
+      "block": 135845482
+    },
+    {
+      "hash": "0x4266d5d22e4754f0f83023e7dc01749de30cd990945e15c1f19601c635f068ee",
+      "block": 135845483
+    },
+    {
+      "hash": "0x84c8e6c33e73e7e8f9fdaca366a8ebc077c3ff032caed551c590ab5f4adc694b",
+      "block": 135845484
+    },
+    {
+      "hash": "0x61fdba66de796e38af1b0fc199ac2dbcbe743a2b70f5e0b121b2d1669a697aee",
+      "block": 135845485
+    },
+    {
+      "hash": "0xbf06ba41b064e298a2bb122eb8f080d003af1dbf6fd39c1b500a30c1cfe83091",
+      "block": 135845486
+    },
+    {
+      "hash": "0x400cdfb79b2abccebdca99a5089c53025dc885240201e1825fd627ac54d74446",
+      "block": 135845487
+    },
+    {
+      "hash": "0x28dcb6d5e13268a7977df9c1fde2b4749aa9c6d3e5c453d98f4a371f3c7003f6",
+      "block": 135845488
+    },
+    {
+      "hash": "0x8f2ecd295f676b802475f63f0a1705c3311c7c855baa397ab9a4bb71ae4c53a7",
+      "block": 135845489
+    },
+    {
+      "hash": "0x343e52b7541c09d41820013cbb3fc8627a5f3e2c1196a99d3282fc63d2d956bb",
+      "block": 135845490
+    },
+    {
+      "hash": "0xb1386733b9c4e9aaec6ed6c2e88f910d465cc34380e677e2a293f7630f6190ad",
+      "block": 135845491
+    },
+    {
+      "hash": "0xd1fddbaff9686d5ae6625687ab0429480215c48479d157fa74fcb8db93d01bed",
+      "block": 135845492
+    },
+    {
+      "hash": "0x4e88fba2dd2570997cec51e428c0fe03f660902700bca38cb929e0e050f2fe2c",
+      "block": 135845493
+    },
+    {
+      "hash": "0xec54d7010071ce69b45aa07c146f3d0d6b5a0383cc5eb2583638a83d49b8783f",
+      "block": 135845495
+    },
+    {
+      "hash": "0xe2b5345475d01a182ee61298aa18ddb3e41a6842f1080f66763329540acb0052",
+      "block": 135845496
+    },
+    {
+      "hash": "0x7ad41231320540ce95c4dfc1ee9317dbe27934cb5153cc76daf74d79f24d1561",
+      "block": 135845497
+    }
+  ],
+  "encryption": "ephemeral local X25519 keys; no secrets recorded",
+  "limitations": "Contract scenarios only; not official wallet, helper policy, website or real-user acceptance",
+  "fullAcceptanceChecklist": "pending; this script covers only the checks listed",
+  "completedAt": "2026-11-26T12:31:01.694Z"
+}

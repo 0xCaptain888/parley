@@ -1,0 +1,12 @@
+[Unit]
+Description=Check Parley staging every five minutes
+
+[Timer]
+OnBootSec=60
+OnUnitActiveSec=300
+AccuracySec=1
+RandomizedDelaySec=15
+Unit=parley-monitor.service
+
+[Install]
+WantedBy=timers.target

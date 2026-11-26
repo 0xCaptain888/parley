@@ -1,0 +1,12 @@
+[Unit]
+Description=Parley staging Telegram alert checks
+
+[Timer]
+OnActiveSec=1h
+OnUnitInactiveSec=1h
+RandomizedDelaySec=5s
+Persistent=false
+Unit=parley-telegram.service
+
+[Install]
+WantedBy=timers.target

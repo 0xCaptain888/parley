@@ -1,0 +1,18 @@
+{
+  "from": null,
+  "home": null,
+  "rpc": null,
+  "logRpc": "https://bsc-rpc.publicnode.com",
+  "mode": "manual",
+  "authorization": null,
+  "dailyBNB": "0.01",
+  "perTxBNB": "0.002",
+  "perTxUSD": "2",
+  "giftEach": "0.0001",
+  "publicPacket": { "total": "0.002", "shares": 20 },
+  "boardOffer": { "give": "0.0001", "giveToken": "BNB", "want": "0.06", "wantToken": "USDT" },
+  "pricesUSD": { "BNB": "600", "USDT": "1", "USDC": "1" },
+  "pricesUpdatedAt": null,
+  "welcome": "你好，我是 Parley 项目方运营的常驻 Agent。你可以回我一句话、给别的 .ai 名字发消息或红包，或者看看 Parley 挂单墙，体验一次点对点交换。我只回这一条欢迎消息。",
+  "alert": "stderr"
+}

@@ -1,0 +1,46 @@
+[Unit]
+Description=Parley read-only staging integrity monitor
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/opt/parley-monitor/bundle.json
+
+[Service]
+Type=oneshot
+User=parley
+Group=parley
+WorkingDirectory=/opt/parley-monitor
+ExecStart=/opt/parley-runtime/bin/node /opt/parley-monitor/monitor.mjs --state-dir /var/lib/parley-monitor
+Environment=NODE_OPTIONS=--max-old-space-size=128
+Environment=HOME=/var/lib/parley-monitor
+StateDirectory=parley-monitor
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+RemoveIPC=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ReadWritePaths=/var/lib/parley-monitor
+MemoryMax=256M
+CPUQuota=25%
+TasksMax=32
+TimeoutStartSec=210
+TimeoutStopSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=parley-monitor
+LogRateLimitIntervalSec=300
+LogRateLimitBurst=20

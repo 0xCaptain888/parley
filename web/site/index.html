@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Parley：按 .ai 名字传话、赠与、收款与点对点交换。">
+  <title>Parley · 名字之间，开始往来</title>
+  <link rel="icon" href="/assets/parley-stamp.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/assets/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><img src="/assets/parley-stamp.svg" width="34" height="34" alt="">Parley<span class="brand-dot"></span></a>
+    <nav aria-label="主导航">
+      <a href="/">概览</a><a href="/packets">红包</a><a href="/board">挂单墙</a><a href="/stats">数据</a><a href="/docs">文档</a>
+    </nav>
+    <a id="language" href="?lang=en" aria-label="Switch language">EN</a>
+    <span id="network" class="network"><span></span>只读网络</span>
+  </header>
+  <div id="notice" role="status"></div>
+  <main id="app" tabindex="-1"><p class="loading">正在读取公开数据...</p></main>
+  <footer>
+    <div><a class="footer-brand" href="/">Parley</a><span>名字之间，开始往来。</span></div>
+    <p>Parley 是独立的第三方项目，不是币安的官方产品。合约未经审计。数字资产有风险，请自行判断。</p>
+    <div class="footer-links"><a href="/docs">隐私与权限</a><a href="/skill/SKILL.md">Agent Skill</a><span id="freshness">尚未连接</span></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+[Unit]
+Description=Parley staging Telegram alerts
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=parley
+Group=parley
+Environment=HOME=/var/lib/parley-monitor
+ExecStart=/opt/parley-runtime/bin/node /opt/parley-telegram-alerts/telegram-watch.mjs --approved-operational-alerts
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadOnlyPaths=/var/lib/parley-monitor
+ReadWritePaths=/var/lib/parley-monitor/telegram
+InaccessiblePaths=/var/lib/parley-agent
+TimeoutStartSec=30
+MemoryMax=128M
+TasksMax=16
+StandardOutput=journal
+StandardError=journal

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "origin": "https://parley-staging.pages.dev",
+  "mode": "staging",
+  "sourceSnapshotSha256": "2f126e875e00320d7bbf069ea291533d3006a34f79d148e2d51bb7f026eeaca7",
+  "files": {
+    "SKILL.md": "dc4edc8b75e22faf7562c3d80794a86c38f7b3e2e5b1f8209cd4b2e81edb7943",
+    "parley.mjs": "1f8fad0b84172ef991134d2af8d04142437a82f8b3cc8a36336298d29795561c"
+  },
+  "packages": {
+    "node_modules/openclaw": {
+      "version": "2026.11.10",
+      "integrity": "sha512-/FKDjxY1ZdUSXHx1a9b4EUpPRZywM3uv4181g22XImJfp/5+h+fFUZ7B7HthNrdYzq//05zH0Yf7mefzIlWFaQ=="
+    },
+    "node_modules/@binance/agentic-wallet": {
+      "version": "1.12.0",
+      "integrity": "sha512-XSqRVRKiHGHzjcuSuH5E2xzzuRP9MJp0U365FY6n7HRE6wRnb3QZrCbVgYPLWA6HDB9g7uw4qX3pt0H+0fltwQ=="
+    }
+  }
+}

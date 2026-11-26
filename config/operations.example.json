@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "logs": {
+    "maxBytes": 1048576,
+    "keep": 7
+  },
+  "alerts": {
+    "enabled": false,
+    "webhook": null,
+    "cooldownSeconds": 300
+  }
+}

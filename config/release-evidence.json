@@ -1,0 +1,92 @@
+{
+  "bscscanVerified": false,
+  "mainnetE2E": false,
+  "auditReview": "pending",
+  "forkTest": {
+    "status": "passed",
+    "evidence": "docs/reports/fork-2026-11-26T12-30-27-441Z-85ae62cc-9378-4d71-b9aa-05ff0b416ea1.json",
+    "verifiedAt": "2026-11-26T12:31:01.694Z",
+    "reportSha256": "fc67944ba301fe52f6cdc4db20488a02240098d2fc6b9c696e70b956f47fe9ef",
+    "snapshotSha256": "91c9ee119c4636c911e0fe08b3dead402fc2dcc3137a930fe650100906696c91",
+    "scope": "22 local scenarios; not real-wallet or real-user acceptance"
+  },
+  "checks": [
+    {
+      "id": 1,
+      "name": "New contract accepted by Binance risk preview",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    },
+    {
+      "id": 2,
+      "name": "Actual sender owns Agent ID",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    },
+    {
+      "id": 3,
+      "name": "App confirmation behavior for all call types",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    },
+    {
+      "id": 4,
+      "name": "Developer-mode balance and daily limits",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    },
+    {
+      "id": 5,
+      "name": "Actual gas payer",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    },
+    {
+      "id": 6,
+      "name": "Payable BNB contract call",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    },
+    {
+      "id": 7,
+      "name": "Exact USDT approval accepted",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    },
+    {
+      "id": 8,
+      "name": "Long ciphertext calldata through CLI",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    },
+    {
+      "id": 9,
+      "name": "Clean-machine Skill URL installation and hashes",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    },
+    {
+      "id": 10,
+      "name": "Actual submission form fields",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    },
+    {
+      "id": 11,
+      "name": "P2P exchange demand interviews",
+      "status": "pending",
+      "evidence": null,
+      "verifiedAt": null
+    }
+  ]
+}

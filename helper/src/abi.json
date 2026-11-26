@@ -1,0 +1,1932 @@
+[
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "registry",
+    "type": "address"
+   },
+   {
+    "internalType": "address",
+    "name": "guardian",
+    "type": "address"
+   },
+   {
+    "internalType": "uint64",
+    "name": "defaultPostage",
+    "type": "uint64"
+   },
+   {
+    "internalType": "uint64",
+    "name": "maxPostage",
+    "type": "uint64"
+   },
+   {
+    "internalType": "uint128",
+    "name": "minShare",
+    "type": "uint128"
+   },
+   {
+    "internalType": "address[]",
+    "name": "capTokens",
+    "type": "address[]"
+   },
+   {
+    "internalType": "uint256[]",
+    "name": "capAmounts",
+    "type": "uint256[]"
+   }
+  ],
+  "stateMutability": "nonpayable",
+  "type": "constructor"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "target",
+    "type": "address"
+   }
+  ],
+  "name": "AddressEmptyCode",
+  "type": "error"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "account",
+    "type": "address"
+   }
+  ],
+  "name": "AddressInsufficientBalance",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "AlreadyClaimed",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "AlreadyMember",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "BadKey",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "BadParams",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "Blocked",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "Empty",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "Expired",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "FailedInnerCall",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "IsPaused",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "NotAgentId",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "NotEligible",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "NotExpired",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "NotFound",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "NotGuardian",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "NotMember",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "NotOpen",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "NotYours",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "NothingToDo",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "OverCap",
+  "type": "error"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "needed",
+    "type": "uint256"
+   }
+  ],
+  "name": "PostageRequired",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "QuotaExceeded",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "RecipientNoMailbox",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "ReentrancyGuardReentrantCall",
+  "type": "error"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "token",
+    "type": "address"
+   }
+  ],
+  "name": "SafeERC20FailedOperation",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "SelfTarget",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "TooLong",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "Underpaid",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "UnexpectedValue",
+  "type": "error"
+ },
+ {
+  "inputs": [],
+  "name": "UnknownHandle",
+  "type": "error"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "owner",
+    "type": "address"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "other",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "isAllowed",
+    "type": "bool"
+   },
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "isBlocked",
+    "type": "bool"
+   }
+  ],
+  "name": "ContactSet",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "owner",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "bytes32",
+    "name": "pubKey",
+    "type": "bytes32"
+   }
+  ],
+  "name": "KeyChanged",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "to",
+    "type": "address"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "from",
+    "type": "address"
+   },
+   {
+    "indexed": true,
+    "internalType": "uint8",
+    "name": "kind",
+    "type": "uint8"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "index",
+    "type": "uint256"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "refId",
+    "type": "uint256"
+   },
+   {
+    "indexed": false,
+    "internalType": "bytes",
+    "name": "data",
+    "type": "bytes"
+   }
+  ],
+  "name": "Mail",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "owner",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "bytes32",
+    "name": "pubKey",
+    "type": "bytes32"
+   }
+  ],
+  "name": "MailboxOpened",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint8",
+    "name": "status",
+    "type": "uint8"
+   }
+  ],
+  "name": "OfferClosed",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "maker",
+    "type": "address"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "taker",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "address",
+    "name": "giveToken",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint128",
+    "name": "giveAmount",
+    "type": "uint128"
+   },
+   {
+    "indexed": false,
+    "internalType": "address",
+    "name": "wantToken",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint128",
+    "name": "wantAmount",
+    "type": "uint128"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint40",
+    "name": "expiry",
+    "type": "uint40"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "refOfferId",
+    "type": "uint256"
+   }
+  ],
+  "name": "OfferCreated",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "taker",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint128",
+    "name": "giveAmount",
+    "type": "uint128"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "wantPaid",
+    "type": "uint256"
+   }
+  ],
+  "name": "OfferSettled",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "to",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "amount",
+    "type": "uint256"
+   }
+  ],
+  "name": "Owed",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "claimer",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint128",
+    "name": "amount",
+    "type": "uint128"
+   },
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "openedMailbox",
+    "type": "bool"
+   }
+  ],
+  "name": "PacketClaimed",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "creator",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "direct",
+    "type": "bool"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint16",
+    "name": "shares",
+    "type": "uint16"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint128",
+    "name": "perShare",
+    "type": "uint128"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint40",
+    "name": "expiry",
+    "type": "uint40"
+   },
+   {
+    "indexed": false,
+    "internalType": "string",
+    "name": "memo",
+    "type": "string"
+   }
+  ],
+  "name": "PacketCreated",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "creator",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint128",
+    "name": "amount",
+    "type": "uint128"
+   }
+  ],
+  "name": "PacketRefunded",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "paused",
+    "type": "bool"
+   }
+  ],
+  "name": "PausedSet",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "owner",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint64",
+    "name": "postage",
+    "type": "uint64"
+   }
+  ],
+  "name": "PostageSet",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint8",
+    "name": "status",
+    "type": "uint8"
+   }
+  ],
+  "name": "RequestClosed",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "payee",
+    "type": "address"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "payer",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "address",
+    "name": "token",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint128",
+    "name": "amount",
+    "type": "uint128"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint40",
+    "name": "expiry",
+    "type": "uint40"
+   }
+  ],
+  "name": "RequestCreated",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "from",
+    "type": "address"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "to",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "amount",
+    "type": "uint256"
+   }
+  ],
+  "name": "StampPosted",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "from",
+    "type": "address"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "to",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "amount",
+    "type": "uint256"
+   }
+  ],
+  "name": "StampReclaimed",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "from",
+    "type": "address"
+   },
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "to",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "amount",
+    "type": "uint256"
+   }
+  ],
+  "name": "StampReleased",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": true,
+    "internalType": "address",
+    "name": "to",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "amount",
+    "type": "uint256"
+   }
+  ],
+  "name": "Withdrawn",
+  "type": "event"
+ },
+ {
+  "inputs": [],
+  "name": "DEFAULT_POSTAGE",
+  "outputs": [
+   {
+    "internalType": "uint64",
+    "name": "",
+    "type": "uint64"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "GUARDIAN",
+  "outputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "MAX_DATA_BYTES",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "MAX_DIRECT",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "MAX_MEMO_BYTES",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "MAX_POSTAGE",
+  "outputs": [
+   {
+    "internalType": "uint64",
+    "name": "",
+    "type": "uint64"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "MAX_SHARES",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "MAX_TTL",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "MIN_SHARE",
+  "outputs": [
+   {
+    "internalType": "uint128",
+    "name": "",
+    "type": "uint128"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "MIN_TTL",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "REGISTRY",
+  "outputs": [
+   {
+    "internalType": "contract IHandleRegistry",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "STAMP_TTL",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "STRANGER_DAILY_LIMIT",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   },
+   {
+    "internalType": "uint128",
+    "name": "payAmount",
+    "type": "uint128"
+   }
+  ],
+  "name": "acceptOffer",
+  "outputs": [],
+  "stateMutability": "payable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "string",
+    "name": "handle",
+    "type": "string"
+   }
+  ],
+  "name": "allow",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   },
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "allowed",
+  "outputs": [
+   {
+    "internalType": "bool",
+    "name": "",
+    "type": "bool"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "string",
+    "name": "handle",
+    "type": "string"
+   }
+  ],
+  "name": "blockHandle",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   },
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "blocked",
+  "outputs": [
+   {
+    "internalType": "bool",
+    "name": "",
+    "type": "bool"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   }
+  ],
+  "name": "cancelOffer",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   }
+  ],
+  "name": "cancelRequest",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "cap",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   },
+   {
+    "internalType": "bytes32",
+    "name": "pubKey",
+    "type": "bytes32"
+   }
+  ],
+  "name": "claimPacket",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "components": [
+     {
+      "internalType": "string",
+      "name": "toHandle",
+      "type": "string"
+     },
+     {
+      "internalType": "address",
+      "name": "giveToken",
+      "type": "address"
+     },
+     {
+      "internalType": "uint128",
+      "name": "giveAmount",
+      "type": "uint128"
+     },
+     {
+      "internalType": "address",
+      "name": "wantToken",
+      "type": "address"
+     },
+     {
+      "internalType": "uint128",
+      "name": "wantAmount",
+      "type": "uint128"
+     },
+     {
+      "internalType": "uint40",
+      "name": "ttl",
+      "type": "uint40"
+     },
+     {
+      "internalType": "uint256",
+      "name": "stamp",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint256",
+      "name": "refOfferId",
+      "type": "uint256"
+     },
+     {
+      "internalType": "bytes",
+      "name": "memo",
+      "type": "bytes"
+     }
+    ],
+    "internalType": "struct Parley.OfferParams",
+    "name": "p",
+    "type": "tuple"
+   }
+  ],
+  "name": "createOffer",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "payable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint16",
+    "name": "shares",
+    "type": "uint16"
+   },
+   {
+    "internalType": "uint40",
+    "name": "ttl",
+    "type": "uint40"
+   },
+   {
+    "internalType": "string[]",
+    "name": "toHandles",
+    "type": "string[]"
+   },
+   {
+    "internalType": "string",
+    "name": "memo",
+    "type": "string"
+   }
+  ],
+  "name": "createPacket",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "payable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "dealsDone",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   }
+  ],
+  "name": "declineOffer",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   }
+  ],
+  "name": "declineRequest",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "who",
+    "type": "address"
+   },
+   {
+    "internalType": "uint256",
+    "name": "start",
+    "type": "uint256"
+   },
+   {
+    "internalType": "uint256",
+    "name": "count",
+    "type": "uint256"
+   }
+  ],
+  "name": "getMail",
+  "outputs": [
+   {
+    "components": [
+     {
+      "internalType": "address",
+      "name": "from",
+      "type": "address"
+     },
+     {
+      "internalType": "uint8",
+      "name": "kind",
+      "type": "uint8"
+     },
+     {
+      "internalType": "uint40",
+      "name": "time",
+      "type": "uint40"
+     },
+     {
+      "internalType": "uint48",
+      "name": "refId",
+      "type": "uint48"
+     },
+     {
+      "internalType": "bytes",
+      "name": "data",
+      "type": "bytes"
+     }
+    ],
+    "internalType": "struct Parley.MailItem[]",
+    "name": "out",
+    "type": "tuple[]"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "who",
+    "type": "address"
+   }
+  ],
+  "name": "inboxLength",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "who",
+    "type": "address"
+   }
+  ],
+  "name": "isMember",
+  "outputs": [
+   {
+    "internalType": "bool",
+    "name": "",
+    "type": "bool"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "mailCount",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "mailboxes",
+  "outputs": [
+   {
+    "internalType": "bytes32",
+    "name": "pubKey",
+    "type": "bytes32"
+   },
+   {
+    "internalType": "uint40",
+    "name": "openedAt",
+    "type": "uint40"
+   },
+   {
+    "internalType": "uint32",
+    "name": "quotaDay",
+    "type": "uint32"
+   },
+   {
+    "internalType": "uint16",
+    "name": "quotaUsed",
+    "type": "uint16"
+   },
+   {
+    "internalType": "bool",
+    "name": "postageSet",
+    "type": "bool"
+   },
+   {
+    "internalType": "uint64",
+    "name": "postage",
+    "type": "uint64"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "memberCount",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "offerCount",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "name": "offers",
+  "outputs": [
+   {
+    "internalType": "address",
+    "name": "maker",
+    "type": "address"
+   },
+   {
+    "internalType": "uint40",
+    "name": "expiry",
+    "type": "uint40"
+   },
+   {
+    "internalType": "uint8",
+    "name": "status",
+    "type": "uint8"
+   },
+   {
+    "internalType": "address",
+    "name": "taker",
+    "type": "address"
+   },
+   {
+    "internalType": "address",
+    "name": "giveToken",
+    "type": "address"
+   },
+   {
+    "internalType": "address",
+    "name": "wantToken",
+    "type": "address"
+   },
+   {
+    "internalType": "uint128",
+    "name": "giveAmount",
+    "type": "uint128"
+   },
+   {
+    "internalType": "uint128",
+    "name": "wantAmount",
+    "type": "uint128"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "bytes32",
+    "name": "pubKey",
+    "type": "bytes32"
+   }
+  ],
+  "name": "openMailbox",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "packetCount",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "name": "packetMemo",
+  "outputs": [
+   {
+    "internalType": "string",
+    "name": "",
+    "type": "string"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   },
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "packetState",
+  "outputs": [
+   {
+    "internalType": "uint8",
+    "name": "",
+    "type": "uint8"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "name": "packets",
+  "outputs": [
+   {
+    "internalType": "address",
+    "name": "creator",
+    "type": "address"
+   },
+   {
+    "internalType": "uint40",
+    "name": "expiry",
+    "type": "uint40"
+   },
+   {
+    "internalType": "uint16",
+    "name": "shares",
+    "type": "uint16"
+   },
+   {
+    "internalType": "uint16",
+    "name": "claimed",
+    "type": "uint16"
+   },
+   {
+    "internalType": "bool",
+    "name": "direct",
+    "type": "bool"
+   },
+   {
+    "internalType": "uint128",
+    "name": "perShare",
+    "type": "uint128"
+   },
+   {
+    "internalType": "uint128",
+    "name": "remaining",
+    "type": "uint128"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "paused",
+  "outputs": [
+   {
+    "internalType": "bool",
+    "name": "",
+    "type": "bool"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   }
+  ],
+  "name": "payRequest",
+  "outputs": [],
+  "stateMutability": "payable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "pending",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "who",
+    "type": "address"
+   }
+  ],
+  "name": "postageOf",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "from",
+    "type": "address"
+   },
+   {
+    "internalType": "string",
+    "name": "toHandle",
+    "type": "string"
+   }
+  ],
+  "name": "reach",
+  "outputs": [
+   {
+    "internalType": "bool",
+    "name": "registered",
+    "type": "bool"
+   },
+   {
+    "internalType": "bool",
+    "name": "hasMailbox",
+    "type": "bool"
+   },
+   {
+    "internalType": "bool",
+    "name": "isBlocked",
+    "type": "bool"
+   },
+   {
+    "internalType": "bool",
+    "name": "free",
+    "type": "bool"
+   },
+   {
+    "internalType": "uint256",
+    "name": "postage",
+    "type": "uint256"
+   },
+   {
+    "internalType": "bytes32",
+    "name": "pubKey",
+    "type": "bytes32"
+   },
+   {
+    "internalType": "uint256",
+    "name": "quotaLeft",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "string",
+    "name": "toHandle",
+    "type": "string"
+   }
+  ],
+  "name": "reclaimStamp",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   }
+  ],
+  "name": "refundPacket",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "requestCount",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "string",
+    "name": "fromHandle",
+    "type": "string"
+   },
+   {
+    "internalType": "address",
+    "name": "token",
+    "type": "address"
+   },
+   {
+    "internalType": "uint128",
+    "name": "amount",
+    "type": "uint128"
+   },
+   {
+    "internalType": "uint40",
+    "name": "ttl",
+    "type": "uint40"
+   },
+   {
+    "internalType": "bytes",
+    "name": "memo",
+    "type": "bytes"
+   }
+  ],
+  "name": "requestPayment",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "id",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "payable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "name": "requests",
+  "outputs": [
+   {
+    "internalType": "address",
+    "name": "payee",
+    "type": "address"
+   },
+   {
+    "internalType": "uint40",
+    "name": "expiry",
+    "type": "uint40"
+   },
+   {
+    "internalType": "uint8",
+    "name": "status",
+    "type": "uint8"
+   },
+   {
+    "internalType": "address",
+    "name": "payer",
+    "type": "address"
+   },
+   {
+    "internalType": "address",
+    "name": "token",
+    "type": "address"
+   },
+   {
+    "internalType": "uint128",
+    "name": "amount",
+    "type": "uint128"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "string",
+    "name": "toHandle",
+    "type": "string"
+   },
+   {
+    "internalType": "uint8",
+    "name": "kind",
+    "type": "uint8"
+   },
+   {
+    "internalType": "bytes",
+    "name": "data",
+    "type": "bytes"
+   }
+  ],
+  "name": "sendMessage",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "index",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "payable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "bytes32",
+    "name": "pubKey",
+    "type": "bytes32"
+   }
+  ],
+  "name": "setKey",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "bool",
+    "name": "value",
+    "type": "bool"
+   }
+  ],
+  "name": "setPaused",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint64",
+    "name": "postage",
+    "type": "uint64"
+   }
+  ],
+  "name": "setPostage",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   },
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "stamps",
+  "outputs": [
+   {
+    "internalType": "uint128",
+    "name": "amount",
+    "type": "uint128"
+   },
+   {
+    "internalType": "uint40",
+    "name": "sentAt",
+    "type": "uint40"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "string",
+    "name": "handle",
+    "type": "string"
+   }
+  ],
+  "name": "unblockHandle",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "withdraw",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ }
+]

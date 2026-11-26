@@ -1,0 +1,29 @@
+{
+  "name": "parley-reference",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reference implementation for the Parley development document: contract, tests, deploy script, mail envelope.",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test && node --test helper/envelope.test.mjs",
+    "test:flows": "hardhat test test/business-flows.test.js",
+    "coverage": "hardhat coverage",
+    "test:fork": "hardhat run scripts/fork-check.js",
+    "test:registry": "hardhat run scripts/registry-check.js",
+    "deploy:local": "hardhat run scripts/deploy.js"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "2.1.2",
+    "@nomicfoundation/hardhat-ethers": "3.1.3",
+    "@nomicfoundation/hardhat-network-helpers": "1.1.2",
+    "@openzeppelin/contracts": "5.0.2",
+    "chai": "4.5.0",
+    "ethers": "6.17.0",
+    "hardhat": "2.29.2",
+    "solidity-coverage": "0.8.17"
+  },
+  "overrides": {
+    "tmp": "0.2.7",
+    "serialize-javascript": "7.1.3"
+  }
+}

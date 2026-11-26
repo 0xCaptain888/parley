@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "chainId": 56,
+  "deployer": null,
+  "guardian": null,
+  "site": "https://parley-staging.pages.dev",
+  "defaultPostageBNB": null,
+  "maxPostageBNB": null,
+  "minShareBNB": null,
+  "capBNB": null,
+  "capUSDT": null,
+  "capUSDC": null,
+  "gasBudgetBNB": null
+}
