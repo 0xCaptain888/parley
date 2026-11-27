@@ -65,19 +65,33 @@ collected. Both supplied participant names match their public Agent ID wallets;
 both mailboxes remain unopened on this formal deployment.
 
 The cloud wallet passed a read-only connection/settings/address/lock preflight.
-The existing cloud business runtime still has an unconfigured build. A separate
-read-only statistics schedule is prepared, not installed or started. Existing
-monitoring does not establish that a resident business worker is running.
+The existing cloud business runtime's original build remains unchanged. A separate
+formal-contract read-only statistics service and five-minute timer have now been
+installed and enabled. An actual scheduled collection completed successfully;
+this does not establish that a resident business worker is running.
+
+The formal-contract 15-file candidate is published at the existing Pages origin.
+All 24 HTTP artifact/header/route/private-path checks and 12 desktop/mobile
+route checks passed. The source repository is now public by explicit owner
+authorization; its tracked history and embedded ZIP members were checked for
+credential markers before the visibility change. This is a bounded disclosure
+check, not a general secret-detection guarantee or another independent audit.
+
+The activation verification passed 321 tests: 13 deployment-profile, 200
+application, 90 operations, 6 Telegram delivery-tool and 12 statistics-installer
+tests. Labeled simulated-fault and recovery test messages both received
+Telegram API acknowledgements. Human receipt confirmation remains separate;
+production health and repeated-incident cooldown state were not changed.
 
 ## Remaining Live Gates
 
-- Approved Cloudflare candidate upload and public integrity/browser checks.
-- Cloud statistics activation, approved resident campaign budgets, mailbox
-  opening, manual business worker activation and ongoing public statistics.
+- Approved resident campaign budgets, mailbox opening, manual business worker
+  activation and ongoing public statistics publication. The private collector
+  timer does not automatically authorize repeated public uploads.
 - Individual official-wallet previews and transaction approvals, followed by
   complete two-user 20-step acceptance with genuine participant evidence.
-- Labeled Telegram fault/recovery exercise and an actual uninterrupted
-  24-hour business observation window.
+- Human confirmation of Telegram receipt, assigned incident response and an
+  actual uninterrupted 24-hour business observation window.
 - Real interviews, growth, genuine wallet video, publication consent and
   final submission.
 - Keyring static-service transition and reboot recovery acceptance,
