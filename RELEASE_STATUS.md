@@ -1,7 +1,24 @@
 # Release Status
 
-Recorded 2026-11-26. This is development-source publication, not a production
-launch or a claim of independent audit approval.
+Updated 2026-11-27. Formal contract deployment and source verification are
+complete. Full production acceptance is not complete.
+
+## Formal BSC Deployment
+
+- Chain ID: `56`.
+- Contract: `0x374499188212a01e3614bc58afe7f71f03a3d22e`.
+- Transaction: `0xb60d598bcb6882ce64de22afeb8beeb2114ced858beb04a72c7c885280f3c8ed`.
+- Deployment block: `135899375`.
+- Actual deployment fee: `0.00033493863092976 BNB`.
+- Approved deployment fee ceiling: `0.005 BNB`, not an operations budget.
+- BscScan publicly displays `Source Code Verified / Exact Match`.
+- Compiler: `v0.8.24+commit.e11b9ed9`, optimizer 200 runs, EVM Paris.
+- All 108 published ABI entries match the current compiled contract.
+
+The canonical receipt, CREATE2 trace, creation input, immutable runtime and
+constructor storage were checked. BscScan web exact-match verification and ABI
+readback are recorded separately from a full Standard JSON API readback, which
+was not obtained. Do not deploy another instance or replay the deployment.
 
 ## Source And Verification
 
@@ -25,26 +42,50 @@ locally funded native balances; no mainnet transaction was sent, and no real
 participant consent or official-wallet compatibility is established.
 It is an Ethereum Osaka EVM approximation, not BSC consensus replay.
 
-The static scanner reported 45 findings: 7 High, 11 Medium, 16 Low and
-11 Informational, plus two separately tracked observations. These require
-individual independent review; they are neither all confirmed vulnerabilities
-nor approved dismissals.
+The original static scanner reported 45 findings: 7 High, 11 Medium, 16 Low
+and 11 Informational, plus two separately tracked observations. This is the
+historical raw scan, not a current unresolved-findings list or an independent
+approval. The existing source-bound review remains separate from these local
+tests and from deployment acceptance.
 
-## Not Completed
+## Current Work
 
-- Independent source-bound security approval.
-- Official-wallet deployment route and fresh transaction preview.
-- Final contract deployment and BscScan source verification.
-- Complete real-wallet compatibility and two-real-user 20-step acceptance.
-- Final production business services and approved campaign budgets.
-- Updated continuous alerts, actual recovery delivery and 24-hour operation logs.
-- Current public build/Agent-host end-to-end installation acceptance.
-- Real-user growth/interviews, genuine wallet video and final submission.
+The original source configuration stays unconfigured to preserve its snapshot.
+`deployments/bsc-mainnet.json` is a separate configuration overlay. It changes
+only the contract, deployment block, resident identity and exclusions.
+Build it explicitly with:
 
-The six proposed deployment amounts have been confirmed by the operator in
-private deployment intent, but they do not authorize signing, deployment or
-operational spending. The current on-disk public configuration deliberately
-has a null final contract and deployment block.
+```sh
+node helper/build.mjs --config deployments/bsc-mainnet.json
+```
+
+A formal-contract helper/Skill and 15-file static candidate have been built
+without changing reviewed source inputs. Confirmed-block statistics were
+collected. Both supplied participant names match their public Agent ID wallets;
+both mailboxes remain unopened on this formal deployment.
+
+The cloud wallet passed a read-only connection/settings/address/lock preflight.
+The existing cloud business runtime still has an unconfigured build. A separate
+read-only statistics schedule is prepared, not installed or started. Existing
+monitoring does not establish that a resident business worker is running.
+
+## Remaining Live Gates
+
+- Approved Cloudflare candidate upload and public integrity/browser checks.
+- Cloud statistics activation, approved resident campaign budgets, mailbox
+  opening, manual business worker activation and ongoing public statistics.
+- Individual official-wallet previews and transaction approvals, followed by
+  complete two-user 20-step acceptance with genuine participant evidence.
+- Labeled Telegram fault/recovery exercise and an actual uninterrupted
+  24-hour business observation window.
+- Real interviews, growth, genuine wallet video, publication consent and
+  final submission.
+- Keyring static-service transition and reboot recovery acceptance,
+  deliberately deferred until the existing work above is handled.
+
+The deployment configuration does not authorize operating spend, certify user
+acceptance or activate a wallet. The public source manifest and historical
+reports remain evidence of their recorded snapshots, not current launch status.
 
 The interface video, if present in a staging build, is fictional UI footage,
 not the final real-wallet demo. No dummy receipt, local signer, generated user

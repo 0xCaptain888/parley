@@ -2,10 +2,11 @@
 
 Message, gift, bill and exchange by `.ai` Agent ID name on BNB Smart Chain.
 
-**Development source, not a production financial service.** Independent
-security review is pending. No final contract is configured and transactions
-remain disabled. Do not send assets to examples or historical trial contracts.
-The staging interface is available at https://parley-staging.pages.dev.
+**Pre-production source, not a completed production financial service.** The
+formal BSC contract is `0x374499188212a01e3614bc58afe7f71f03a3d22e`; BscScan
+source verification shows Exact Match. Real-wallet, two-user and operations
+acceptance remain unfinished. Do not send assets to examples or old trial
+contracts. The public staging interface is https://parley-staging.pages.dev.
 
 ## Local Development
 
@@ -58,7 +59,10 @@ they are not claims of completed production acceptance.
 queries and unsigned calls; `web/` contains the static interface and collector;
 `resident/` contains the manual proposal queue; `operations/` contains bounded
 cloud adapters. The generated `skill/` artifacts are reproducible using
-`npm run build`.
+`npm run build`. This default remains unconfigured. For the separate formal
+deployment profile use `node helper/build.mjs --config deployments/bsc-mainnet.json`.
+That command prepares a candidate; it does not authorize signing or certify a
+production release.
 
 MIT. No seed phrase, private key, wallet password or Telegram token is needed
 to review or run the local tests.

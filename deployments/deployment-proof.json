@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "scope": "factory-CREATE2-receipt-trace-runtime-and-constructor",
+  "chainId": 56,
+  "transactionHash": "0xb60d598bcb6882ce64de22afeb8beeb2114ced858beb04a72c7c885280f3c8ed",
+  "address": "0x374499188212a01e3614bc58afe7f71f03a3d22e",
+  "block": 135899375,
+  "blockHash": "0xdb2eec752443f7d4e832bed1184d3819915436c51b205bb04a2250574fe42a1e",
+  "routeSha256": "1a9bccc2917c8e0b97b9db8ccbacaeee6d32c2d4a9ae988ea65e5b7cdb2cb676",
+  "planSha256": "817483a791dfb9ddceb0de7335a7b796efede93cacc2295cf3ab7e392a92617c",
+  "snapshotSha256": "91c9ee119c4636c911e0fe08b3dead402fc2dcc3137a930fe650100906696c91",
+  "actualFeeWei": "334938630929760",
+  "internalCreation": {
+    "status": "passed",
+    "type": "CREATE2",
+    "createdAddress": "0x374499188212a01e3614bc58afe7f71f03a3d22e",
+    "nodesInspected": 2,
+    "internalCreations": 1,
+    "traceSha256": "bb0daaab3aa5c0fe1c7746ca524fbaebcf772895400120be2b4780a7d1fb86ff"
+  },
+  "stateInspection": {
+    "schemaVersion": 1,
+    "status": "passed",
+    "scope": "runtime-and-storage-only-no-creation-transaction",
+    "chainId": 56,
+    "address": "0x374499188212a01e3614bc58afe7f71f03a3d22e",
+    "block": 135899375,
+    "blockHash": "0xdb2eec752443f7d4e832bed1184d3819915436c51b205bb04a2250574fe42a1e",
+    "expectedRuntimeKeccak256": "0xd13b2a683b25d9d7c6de106473e42e8e399a663ff32ee01fb010cfda6405ca18",
+    "checks": [
+      {
+        "name": "intended_chain",
+        "status": "passed"
+      },
+      {
+        "name": "intended_registry",
+        "status": "passed"
+      },
+      {
+        "name": "intended_tokens",
+        "status": "passed"
+      },
+      {
+        "name": "runtime_including_immutables",
+        "status": "passed"
+      },
+      {
+        "name": "REGISTRY",
+        "status": "passed"
+      },
+      {
+        "name": "GUARDIAN",
+        "status": "passed"
+      },
+      {
+        "name": "DEFAULT_POSTAGE",
+        "status": "passed"
+      },
+      {
+        "name": "MAX_POSTAGE",
+        "status": "passed"
+      },
+      {
+        "name": "MIN_SHARE",
+        "status": "passed"
+      },
+      {
+        "name": "cap:0x0000000000000000000000000000000000000000",
+        "status": "passed"
+      },
+      {
+        "name": "cap:0x55d398326f99059ff775485246999027b3197955",
+        "status": "passed"
+      },
+      {
+        "name": "cap:0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "status": "passed"
+      },
+      {
+        "name": "paused",
+        "status": "passed"
+      },
+      {
+        "name": "memberCount",
+        "status": "passed"
+      }
+    ],
+    "transactionBound": false,
+    "intendedConfigChecked": true,
+    "bscscanVerified": false,
+    "realWallet": false,
+    "mainnetBroadcast": false,
+    "productionRelease": false
+  },
+  "transactionBound": true,
+  "minimumConfirmations": 12,
+  "bscscanVerified": false,
+  "mainnetBroadcast": false,
+  "productionRelease": false,
+  "note": "Read-only receipt verification; does not attest user consent, independent route review or BscScan publication",
+  "checkedAt": "2026-11-26T19:10:24.161Z",
+  "archiveEvidence": {
+    "path": "parley-formal-deployment-archive-20261127-r1.json",
+    "sha256": "75619516d075766400d42784ca6d56459fa952ca3061e5b52e100b514157e595",
+    "source": "solidrpc-bsc-private-credential-read-only",
+    "checkedAt": "2026-11-26T19:08:41.635132+00:00",
+    "canonicalRechecked": true,
+    "headBlockNumber": "0x819ab6c",
+    "all18RecordsValidated": true
+  }
+}
