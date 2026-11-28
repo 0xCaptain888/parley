@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="160" viewBox="0 0 620 160" fill="none">
+  <g transform="translate(18 18) scale(1.85)">
+    <path fill="#222c24" fill-rule="evenodd" d="M7 4h32v19h19v7c0 13.255-10.745 24-24 24H21L7 63V4Zm14 14v26l8-5h4c6.627 0 12-4.925 12-11S39.627 18 33 18H21Z" clip-rule="evenodd"/>
+    <path fill="#db594b" d="m43 4 15 15H43V4Z"/>
+  </g>
+  <text x="154" y="119" fill="#222c24" font-family="Arial,Helvetica,sans-serif" font-size="112" font-weight="750">Parley</text>
+  <style>@media(prefers-color-scheme:dark){text,path:first-child{fill:#edf1ec}}</style>
+</svg>

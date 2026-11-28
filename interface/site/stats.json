@@ -1,0 +1,39 @@
+{
+  "updatedAt": 1795752486,
+  "block": 135971880,
+  "contract": "0x374499188212a01e3614bc58afe7f71f03a3d22e",
+  "members": 0,
+  "mail": {
+    "text": 0,
+    "deal": 0
+  },
+  "packets": {
+    "created": 0,
+    "claims": 0,
+    "claimsThatOpenedMailbox": 0,
+    "bnb": "0"
+  },
+  "requests": {
+    "created": 0,
+    "paid": 0
+  },
+  "offers": {
+    "created": 0,
+    "settled": 0,
+    "publicCreated": 0
+  },
+  "retention": {
+    "secondAction": 0,
+    "repliedAfterClaim": 0,
+    "secondActionMembers": 0,
+    "repliedClaimers": 0,
+    "claimers": 0
+  },
+  "pairs": 0,
+  "daily": [],
+  "excluded": [
+    "0xb550e4cc7271bdbc722427057003410aec9fc2f4",
+    "0xa2c191561397c584ddad75388b5519e4931ef026"
+  ],
+  "blockHash": "0x150bd1e07fb4d2d04d9bfd5282dfec89f355c38aa1d76af461ce11ac307fff5d"
+}

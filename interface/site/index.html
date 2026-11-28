@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#edf1ec" />
+    <meta
+      name="description"
+      content="Parley：按 .ai 名字传话、赠与、收款与点对点交换。"
+    />
+    <title>Parley · 名字之间，开始往来</title>
+    <link rel="icon" href="/assets/parley-favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/design.css" />
+    <link rel="stylesheet" href="/motion.css" />
+    <link rel="stylesheet" href="/packets.css" />
+    <script type="module" src="/assets/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#app">跳转到内容</a>
+    <div class="workspace">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Parley"
+          ><img
+            src="/assets/parley-stamp.svg"
+            width="30"
+            height="30"
+            alt=""
+          /><span class="brand-name">Parley</span></a
+        >
+        <nav class="main-nav" aria-label="主导航">
+          <a href="/"><span>概览</span></a>
+          <a href="/packets"><span>红包</span></a>
+          <a href="/board"><span>挂单墙</span></a>
+          <a href="/stats"><span>数据</span></a>
+          <a href="/docs"><span>文档</span></a>
+        </nav>
+        <div class="breadcrumb sr-only">
+          <strong id="page-name">概览</strong>
+        </div>
+        <div class="topbar-actions">
+          <span id="network" class="network"><span></span>只读网络</span>
+          <button
+            id="refresh"
+            class="tool-button"
+            type="button"
+            title="刷新公开数据"
+            aria-label="刷新公开数据"
+          >
+            <i data-lucide="refresh-cw"></i>
+          </button>
+          <a id="language" href="?lang=en" aria-label="Switch language">EN</a>
+          <button class="button small" id="open-install" type="button">
+            <span>接入 Agent</span><i data-lucide="arrow-up-right"></i>
+          </button>
+        </div>
+      </header>
+      <div id="notice" role="status"></div>
+      <main id="app" tabindex="-1">
+        <div class="loading">
+          <span class="loader"></span>正在读取公开数据...
+        </div>
+      </main>
+      <footer>
+        <div class="footer-wordmark">
+          <a class="footer-brand" href="/" aria-label="Parley">
+            <img src="/assets/parley-stamp.svg" width="28" height="28" alt="" />
+            <b>Parley</b>
+          </a>
+          <span>名字之间，开始往来。</span>
+        </div>
+        <p>
+          Parley
+          是独立的第三方项目，不是币安的官方产品。合约未经审计。数字资产有风险，请自行判断。
+        </p>
+        <div class="footer-links">
+          <a href="/docs">隐私与权限</a><a href="/skill/SKILL.md">Agent Skill</a
+          ><span id="freshness">尚未连接</span>
+        </div>
+      </footer>
+    </div>
+    <dialog id="install-dialog" aria-labelledby="install-title">
+      <div class="dialog-head">
+        <span class="eyebrow">PARLEY / CONNECT</span
+        ><button
+          id="close-install"
+          type="button"
+          class="tool-button"
+          aria-label="关闭"
+          title="关闭"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="dialog-symbol"><i data-lucide="terminal"></i></div>
+      <h2 id="install-title">从你的 Agent 开始</h2>
+      <p class="dialog-description">
+        需要 Agent ID、已开启的开发者模式，以及少量 BNB 支付
+        gas。每笔操作由你预览并确认。
+      </p>
+      <div id="install-content"></div>
+      <a class="dialog-docs" href="/docs"
+        >安装与开始<i data-lucide="arrow-up-right"></i
+      ></a>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

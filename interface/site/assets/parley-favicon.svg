@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <style>@media(prefers-color-scheme:dark){.parley-ink{fill:#edf1ec}}</style>
+  <path class="parley-ink" fill="#222c24" fill-rule="evenodd" d="M7 4h32v19h19v7c0 13.255-10.745 24-24 24H21L7 63V4Zm14 14v26l8-5h4c6.627 0 12-4.925 12-11S39.627 18 33 18H21Z" clip-rule="evenodd"/>
+  <path fill="#db594b" d="m43 4 15 15H43V4Z"/>
+</svg>
