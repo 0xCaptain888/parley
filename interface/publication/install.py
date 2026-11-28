@@ -13,7 +13,8 @@ import urllib.request
 ORIGIN = "https://parley-staging.pages.dev"
 ROOT = Path("/opt/parley-stats-publication")
 STATE = Path("/var/lib/parley-stats-publication")
-STAGE = Path("/opt/parley-interface-stage-20261128-r1")
+STAGE = Path("/opt/parley-interface-stage-20261128-r2")
+PREVIOUS_SITE = ROOT / "site-before-ui-20261128-r2"
 
 
 def sha(raw):
@@ -29,6 +30,25 @@ def active(unit):
 
 
 def download(url, limit=20 * 1024 * 1024):
+    if url.startswith(ORIGIN + "/"):
+        script = """
+const [url, limit] = process.argv.slice(1);
+const response = await fetch(url, { redirect: "error", signal: AbortSignal.timeout(45000) });
+if (response.status !== 200 || response.url !== url) throw Error("Unexpected public response");
+const chunks = [];
+let size = 0;
+for await (const chunk of response.body) {
+  size += chunk.byteLength;
+  if (size > Number(limit)) throw Error("Public response too large");
+  chunks.push(Buffer.from(chunk));
+}
+if (!size) throw Error("Empty public response");
+process.stdout.write(Buffer.concat(chunks));
+"""
+        result = subprocess.run(
+            ["/opt/parley-runtime/bin/node", "--input-type=module", "-e", script, url, str(limit)],
+            check=True, capture_output=True, timeout=50)
+        return result.stdout
     with urllib.request.urlopen(url, timeout=45) as response:
         assert response.status == 200 and response.geturl() == url
         raw = response.read(limit + 1)
@@ -98,9 +118,9 @@ def main():
         for name in ["publisher.mjs", "formal-monitor.mjs"]:
             command("/opt/parley-runtime/bin/node", "--check", str(staged / name))
         # Fail closed after replacing the baseline; a failed upload is never retried here.
-        assert not (ROOT / "site-before-ui-20261128").exists()
+        assert not PREVIOUS_SITE.exists()
         installed = True
-        os.rename(ROOT / "site", ROOT / "site-before-ui-20261128")
+        os.rename(ROOT / "site", PREVIOUS_SITE)
         os.rename(staged / "site", ROOT / "site")
         for name in ["publisher.mjs", "formal-monitor.mjs"]:
             os.replace(staged / name, ROOT / name)

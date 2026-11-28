@@ -36,6 +36,7 @@ import {
 } from "lucide";
 import abi from "./abi.json";
 import { english, localizeDom } from "./i18n.mjs";
+import { sourceOrder, pageKind, exampleGifts, exampleOffers, exampleActivity } from "./presentation.mjs";
 
 const app = document.querySelector("#app");
 const config = await fetch("/config.json").then((r) => r.json());
@@ -306,17 +307,18 @@ function risk() {
   );
   return r;
 }
-function packetCard(p) {
+function packetCard(p, { example = demo } = {}) {
   const c = el("article", "packet");
+  c.dataset.source = example ? "example" : "live";
   const top = el("div", "packet-top");
   top.append(el("div", "avatar", p.from.slice(0, 1).toUpperCase()));
   const identity = el("div");
   identity.append(
     el("div", "packet-name", p.from),
-    el("div", "packet-id", `PARLEY #${p.id}`)
+    el("div", "packet-id", example ? `EXAMPLE ${String(p.id).padStart(2, "0")}` : `PARLEY #${p.id}`)
   );
   top.append(identity);
-  top.append(el("span", "tag", p.direct ? "定向红包" : "公开红包"));
+  top.append(el("span", "tag", example ? (en ? "Fictional gift" : "虚构红包") : p.direct ? "定向红包" : "公开红包"));
   c.append(top);
   const face = el("div", "gift-face");
   const visual = el("button", "packet-visual");
@@ -363,7 +365,7 @@ function packetCard(p) {
   const edition = el(
     "div",
     "packet-edition",
-    `GIFT NO. ${String(p.id).padStart(3, "0")}`
+    `${example ? "EXAMPLE" : "GIFT NO."} ${String(p.id).padStart(3, "0")}`
   );
   words.append(edition);
   face.append(visual, words);
@@ -390,7 +392,9 @@ function packetCard(p) {
   expiry.append(el("span", "", time(p.expiry)));
   meta.append(remaining, expiry);
   const actions = el("div", "packet-actions");
-  actions.append(
+  if (example) actions.append(el("span", "example-note",
+    en ? "Fictional example · Not claimable" : "虚构示例 · 不可领取"));
+  else actions.append(
     button(
       "复制领取口令",
       actionPrompt(en ? `Claim Parley #${p.id}` : `领 Parley 红包 #${p.id}`),
@@ -401,6 +405,148 @@ function packetCard(p) {
   bottom.append(meta, progress, actions);
   c.append(bottom);
   return c;
+}
+let sourceState = { count: 0, status: "empty" };
+function setSource(count, status = count > 0 ? "available" : "empty") {
+  sourceState = { count, status };
+}
+function exampleThread() {
+  const thread = el("div", "example-thread");
+  for (const [ico, from, text] of [
+    ["mail", "hello.ai → atlas.ai", en ? "A hello, sent by name." : "你好，很高兴在这里遇见你。"],
+    ["gift", "atlas.ai → hello.ai", en ? "A little gift for our first connection." : "一份小小见面礼，送给新的连接。"],
+    ["check", "hello.ai → atlas.ai", en ? "Received. Let us keep in touch." : "收到了，下次继续聊。"],
+  ]) {
+    const row = el("div", "example-message");
+    row.innerHTML = icon(ico);
+    row.append(el("small", "", from), el("p", "", text));
+    thread.append(row);
+  }
+  return thread;
+}
+function exampleExchange() {
+  const rows = el("div", "example-offers");
+  for (const offer of exampleOffers) {
+    const row = el("div", "example-offer");
+    const who = el("div", "example-person");
+    who.append(el("span", "example-avatar", offer.name[0]), el("span", "", offer.name));
+    row.append(who);
+    for (const [index, value] of [offer.give, offer.want].entries()) {
+      if (index) {
+        const arrow = el("span", "example-swap-icon");
+        arrow.innerHTML = icon("arrow-left-right");
+        row.append(arrow);
+      }
+      const amount = el("div");
+      amount.append(el("small", "", en ? (index ? "They request" : "They offer") : (index ? "希望换到" : "拿出")),
+        el("b", "", value));
+      row.append(amount);
+    }
+    const status = el("span", "example-status", en ? "Example only" : "仅作演示");
+    row.append(status);
+    rows.append(row);
+  }
+  return rows;
+}
+function exampleChart() {
+  const fragment = el("div", "example-activity");
+  const metrics = el("div", "example-metrics");
+  for (const [label, value] of [
+    [en ? "Example members" : "示例成员", exampleActivity.members],
+    [en ? "Example mail" : "示例邮件", exampleActivity.mail],
+    [en ? "Example gifts" : "示例红包", exampleActivity.gifts],
+    [en ? "Example return rate" : "示例第二动作率", exampleActivity.secondAction],
+  ]) {
+    const item = el("div");
+    item.append(el("small", "", label), el("strong", "", value));
+    metrics.append(item);
+  }
+  const chart = el("div", "example-chart");
+  chart.setAttribute("role", "img");
+  chart.setAttribute("aria-label", en ? "Fictional seven-day activity" : "虚构的七天往来记录");
+  for (const day of exampleActivity.days) {
+    const column = el("div", "example-day");
+    for (const [key, cls] of [["active", ""], ["joined", "joined"]]) {
+      const bar = el("div", `example-bar ${cls}`);
+      bar.style.setProperty("--height", `${day[key] / 17 * 100}%`);
+      column.append(bar);
+    }
+    column.append(el("small", "", day.label));
+    chart.append(column);
+  }
+  fragment.append(metrics, chart);
+  return fragment;
+}
+function createShowcase() {
+  const kind = pageKind(route);
+  const titles = {
+    overview: ["一段往来，三种可能。", "One connection. Many possibilities."],
+    gifts: ["一份心意，等你开启。", "A little hello. Ready to unfold."],
+    gift: ["从一份见面礼开始。", "A connection begins with a gift."],
+    offers: ["一次交换，两边心意。", "An exchange. Two sides of a connection."],
+    activity: ["往来，慢慢有了形状。", "See a network take shape."],
+    guide: ["从第一声你好开始。", "Start with a simple hello."],
+  };
+  const box = el("section", "source-region showcase");
+  box.dataset.showcase = kind;
+  box.dataset.source = "example";
+  box.setAttribute("aria-label", en ? "Fictional examples" : "虚构演示区");
+  const heading = el("div", "showcase-heading");
+  const title = el("div");
+  const kicker = el("p", "showcase-kicker");
+  kicker.innerHTML = icon("circle-play");
+  kicker.append(document.createTextNode("PARLEY / EXAMPLE EDITION"));
+  title.append(kicker, el("h2", "", titles[kind][en ? 1 : 0]));
+  const badge = el("span", "source-badge");
+  badge.innerHTML = icon("circle-play");
+  badge.append(el("span", "", en ? "DEMO · FICTIONAL DATA" : "演示区 · 虚构数据"));
+  heading.append(title, badge);
+  box.append(heading);
+  if (kind === "gifts") {
+    const grid = el("div", "packet-grid");
+    exampleGifts(undefined, en).forEach(p => grid.append(packetCard(p, { example: true })));
+    box.append(grid);
+  } else if (kind === "offers") box.append(exampleExchange());
+  else if (kind === "activity") box.append(exampleChart());
+  else {
+    const journey = el("div", "example-journey");
+    journey.append(packetCard(exampleGifts(undefined, en)[0], { example: true }), exampleThread());
+    box.append(journey);
+  }
+  box.append(el("p", "showcase-disclosure", en
+    ? "Names, records and metrics in this section are fictional. They are not real users, on-chain activity or available offers."
+    : "本区名字、记录和统计均为虚构示例，不代表真实用户、链上活动或可领取、可成交的对象。"));
+  return box;
+}
+function mountPresentation() {
+  if (demo) return;
+  const hero = app.querySelector(":scope > .experience");
+  const head = app.querySelector(":scope > .page-head");
+  const signoff = app.querySelector(":scope > .postscript");
+  let live = app.querySelector(":scope > .live-region");
+  if (!live) {
+    live = el("section", "source-region live-region");
+    live.dataset.source = "live";
+    const contents = [...app.children].filter(node => ![hero, head, signoff].includes(node));
+    live.append(...contents);
+  }
+  live.dataset.status = sourceState.status;
+  const oldHeading = live.querySelector(":scope > .source-heading");
+  oldHeading?.remove();
+  const label = el("div", "source-heading");
+  const name = el("strong");
+  name.innerHTML = icon(route === "/docs" ? "book-open" : "shield-check");
+  name.append(el("span", "", en ? (route === "/docs" ? "PROJECT DOCUMENTATION" : "ON-CHAIN DATA") : (route === "/docs" ? "项目文档" : "真实链上数据")));
+  label.append(name, el("span", "", en
+    ? ({ empty: "No records available", unavailable: "Read unavailable · Not replaced by examples", available: "Independent of fictional examples", reference: "Published project information" }[sourceState.status])
+    : ({ empty: "暂无可展示记录", unavailable: "读取失败 · 未用示例替代", available: "与虚构示例独立展示", reference: "公开项目信息" }[sourceState.status])));
+  live.prepend(label);
+  let example = app.querySelector(":scope > .showcase");
+  if (!example) example = createShowcase();
+  const ordered = sourceOrder(sourceState).map(source => source === "live" ? live : example);
+  if (signoff) ordered.forEach(node => app.insertBefore(node, signoff));
+  else app.append(...ordered);
+  translateAndIcon(live);
 }
 const demoPackets = () =>
   ["hello", "atlas", "mori", "pixel", "echo", "sora"].map((h, i) => ({
@@ -716,6 +862,7 @@ async function home() {
   app.append(signoff);
   homeRefresh = async () => {
     if (!metrics.isConnected) return;
+    let count = 0;
     try {
       if (
         !demo &&
@@ -724,11 +871,13 @@ async function home() {
       )
         throw new Error("RPC chain mismatch");
       const counts = await homeCounts();
+      count = counts.reduce((sum, value) => sum + (Number(value) || 0), 0);
       metrics
         .querySelectorAll(".metric-value")
         .forEach((e, i) => (e.textContent = counts[i]));
       const list = await packets(),
         grid = el("div", "packet-grid");
+      setSource(count + list.length);
       list.slice(0, 2).forEach((p) => grid.append(packetCard(p)));
       results.replaceChildren(
         list.length
@@ -739,11 +888,13 @@ async function home() {
             )
       );
     } catch {
+      setSource(count, "unavailable");
       results.replaceChildren(
         empty("数据读取失败", "公开数据暂时无法读取，请稍后刷新重试。")
       );
     }
     translateAndIcon(results);
+    if (app.querySelector(":scope > .live-region")) mountPresentation();
   };
   await homeRefresh();
 }
@@ -813,6 +964,7 @@ async function packetList() {
   app.append(toolbar);
   const list = await packets(),
     results = el("div", "packet-results");
+  setSource(list.length);
   app.append(results);
   function draw() {
     const q = packetSearch.trim().toLowerCase().replace(/^#/, "");
@@ -870,6 +1022,7 @@ async function detail() {
     app.append(empty("没有找到这个红包", "部署尚未完成，或编号不存在。"));
     return;
   }
+  setSource(1);
   head(
     `Parley 红包 #${id}`,
     p.direct
@@ -960,6 +1113,7 @@ async function board() {
     );
     return;
   }
+  setSource(list.length);
   const intro = el("div", "board-intro");
   intro.innerHTML =
     '<span><i data-lucide="arrow-left-right"></i><span>公开报价 · 链上托管</span></span><span>成交前核对资产与有效期</span>';
@@ -1087,9 +1241,11 @@ async function statistics() {
     return;
   }
   if (!demo && s.contract?.toLowerCase() !== config.contract?.toLowerCase()) {
+    setSource(0, "unavailable");
     app.append(empty("统计部署不匹配", "请运营方更新统计。"));
     return;
   }
+  setSource(s.members + s.mail.text + s.mail.deal + s.packets.created + s.requests.created + s.offers.created);
   app.append(statStatus(s));
   const h = el("div", "stats-hero");
   h.append(el("strong", "", `${(s.retention.secondAction * 100).toFixed(1)}%`));
@@ -1183,6 +1339,7 @@ async function statistics() {
   app.append(notes);
 }
 function docs() {
+  setSource(1, "reference");
   head(
     "使用文档",
     "从名字开始，资金操作始终由你确认。",
@@ -1260,7 +1417,8 @@ async function render() {
       : null;
   let success = false;
   try {
-    const version = ++renderVersion;
+    ++renderVersion;
+    setSource(0);
     packetDisplay?.dispose();
     packetDisplay = null;
     sceneController?.dispose();
@@ -1286,6 +1444,7 @@ async function render() {
     else if (route === "/stats") await statistics();
     else if (route === "/docs") docs();
     else app.append(empty("页面不存在", "请使用顶部导航返回。"));
+    mountPresentation();
     document.querySelector("#freshness").textContent = demo
       ? "本地演示数据"
       : config.contract
@@ -1295,15 +1454,6 @@ async function render() {
       : "未部署 · 无实时数据";
     if (en) localizeDom(document.body);
     icons();
-    if (route === "/" || route === "/packets" || route.startsWith("/p/"))
-      import("./packet-scene.mjs")
-        .then(({ mountPacketDisplay }) => {
-          if (version !== renderVersion) return;
-          packetDisplay = mountPacketDisplay(app, {
-            isPaused: () => scenePaused,
-          });
-        })
-        .catch(() => {});
     success = true;
   } catch (e) {
     app.querySelector(".loading")?.remove();
@@ -1329,9 +1479,19 @@ async function render() {
     retry.onclick = () => render();
     error.append(retry);
     app.prepend(error);
+    setSource(sourceState.count, "unavailable");
+    mountPresentation();
     document.querySelector("#freshness").textContent = "数据读取失败";
     translateAndIcon(document.body);
   } finally {
+    const version = renderVersion;
+    if (route === "/" || route === "/packets" || route.startsWith("/p/") || route === "/docs")
+      import("./packet-scene.mjs")
+        .then(({ mountPacketDisplay }) => {
+          if (version !== renderVersion) return;
+          packetDisplay = mountPacketDisplay(app, { isPaused: () => scenePaused });
+        })
+        .catch(() => {});
     running = false;
     refresh.disabled = false;
     refresh.classList.remove("spinning");

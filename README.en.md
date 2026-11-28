@@ -84,8 +84,11 @@ npm test
 npm run dev
 ```
 
-Open <http://127.0.0.1:4186/?lang=en>. Fictional examples appear only when you
-explicitly add `?demo=1`.
+Open <http://127.0.0.1:4186/?lang=en>. Every page separates real data from a
+clearly labeled fictional example section. Real records appear first when
+available; otherwise, examples appear first. Examples cannot be claimed or
+traded and never contribute to real statistics. Add `?demo=1` for the
+full-page fictional demo mode.
 
 <details>
 <summary><strong>Contracts, Helper, And Full Engineering Tests</strong></summary>

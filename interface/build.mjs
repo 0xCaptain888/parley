@@ -46,7 +46,7 @@ function inventory(directory, ignore = []) {
 }
 const sourceFiles = {
   ...Object.fromEntries(Object.entries(inventory(path.join(root, "src"))).map(([name, value]) => ["src/" + name, value.sha256])),
-  ...Object.fromEntries(["site/index.html", "site/design.css", "site/motion.css", "site/packets.css",
+  ...Object.fromEntries(["site/index.html", "site/design.css", "site/motion.css", "site/packets.css", "site/showcase.css",
     "site/assets/parley-stamp.svg", "site/assets/parley-favicon.svg"].map(name => [name, hash(fs.readFileSync(path.join(root, name)))])),
 };
 const files = inventory(site, ["release-manifest.json"]);
@@ -66,7 +66,7 @@ const manifest = {
     independentReviewInherited: false,
     frontendReadOnly: true,
     statistics: "Collector snapshot; freshness checked at display and publication time.",
-    demo: "Fictional examples are opt-in via demo=1 and are never live acceptance evidence.",
+    demo: "Inline fictional examples are isolated and labeled, never executable or counted as live activity. Legacy demo=1 remains explicitly fictional.",
     packetPresentation: "Gift surfaces omit monetary amounts. Existing contract payouts remain fixed-share, not random.",
   },
 };

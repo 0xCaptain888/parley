@@ -1,4 +1,4 @@
-// work/parley-production-activation/closeout/publisher.mjs
+// ../parley-production-activation/closeout/publisher.mjs
 import assert4 from "node:assert/strict";
 import fs3 from "node:fs";
 import path3 from "node:path";
@@ -6,34 +6,36 @@ import { randomUUID } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath as fileURLToPath2 } from "node:url";
 
-// outputs/parley-production-activation-2026-11-27-r1/application/scripts/publication-plan.mjs
+// ../../outputs/parley-production-activation-2026-11-27-r1/application/scripts/publication-plan.mjs
 import assert2 from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 
-// outputs/parley-production-activation-2026-11-27-r1/application/scripts/evidence.mjs
+// ../../outputs/parley-production-activation-2026-11-27-r1/application/scripts/evidence.mjs
 import { createHash } from "node:crypto";
 var sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
-// work/parley-publication/ui-site-release.mjs
+// ui-site-release.mjs
 import assert from "node:assert/strict";
 
-// work/parley-publication/repository/interface/site/release-manifest.json
+// repository/interface/site/release-manifest.json
 var release_manifest_default = {
   schemaVersion: 1,
   mode: "candidate",
   sourceSnapshotSha256: "91c9ee119c4636c911e0fe08b3dead402fc2dcc3137a930fe650100906696c91",
-  frontendSourceSha256: "b8c2b8fe6262b374a1b474907f3b532f97d2c2f60d6f4907ecea0b2270620e83",
+  frontendSourceSha256: "b8b2f2c90b89683e67408fb5348ce605450c943912af5e5c9237a64b158a9878",
   frontendSourceFiles: {
     "src/abi.json": "fb88d8018ccbfd89027fd6beaecbabc27cb73e8f3ca1b7be87e8544840b4608f",
-    "src/app.mjs": "b2f53b19774b229f776b9fc7535d8ec51ae96937a22895d1b52e59310dbb1661",
+    "src/app.mjs": "8d0cbbb202078e339fd0ca66955a21d03028f802ae6bb5d57de6d9bee5702bea",
     "src/i18n.mjs": "71936866e10032bc6499e77187337017e42cc267cea0a281cc9d734775fcec8f",
     "src/packet-scene.mjs": "306c76a14fcc7d363f864230168e3ebcb8a51022326b5285eb79716c8d1b4f92",
+    "src/presentation.mjs": "f55286752ab08c92cd1dc98aebf86383b5ae2c924825a51c9d1be8689cb25622",
     "src/scene.mjs": "ce8f597e939093a3d12ef27650bd1ec0de42e59b869f737871aafb5db46c50ac",
-    "site/index.html": "521e7623b1c72d7729e11c9eb8f02670701446f93f410e0afc82cbd90b8b1738",
+    "site/index.html": "fc7907ce0735c44752fb2e9641358d54d9e75554355526591a51c0d3a5b2e390",
     "site/design.css": "5f703735ad05c0a70ac6f3cc26dd3bcbe988a4bea52e3fa4bc31f9addb263498",
     "site/motion.css": "9a311721b7e1d509e109f3b305dd7637729f69566b2c444aea31ad6331ecc634",
     "site/packets.css": "379dc82440867f943fc8983d1976fba67cbe98b677398201995d9e3470a0b464",
+    "site/showcase.css": "ea7b6d3d25e5795af08e2cb0f72ccc3884d565fe4c278dcb1fd32753773287a8",
     "site/assets/parley-stamp.svg": "954c49a2cbc8c02f86820a064cfb8115a3a1b58b84d3e7819910e0ce0edfae5c",
     "site/assets/parley-favicon.svg": "991e9249f0998d2d9c8a0aa2add783f63fa1d5cc2275f684e08d0532ff95b017"
   },
@@ -76,8 +78,8 @@ var release_manifest_default = {
       mutable: false
     },
     "assets/app.js": {
-      bytes: 232531,
-      sha256: "ac7f1850b88a8d4fb6c035980a2d9e923fdf1ef17c3fe3cfd744db26065df9ac",
+      bytes: 239686,
+      sha256: "98622960c9bec2584f3e3eeda525274cb01476d5770b5e3b4cc499736ebfa0de",
       mutable: false
     },
     "assets/chunks/ccip-MN2TBC26.js": {
@@ -156,8 +158,8 @@ var release_manifest_default = {
       mutable: false
     },
     "index.html": {
-      bytes: 3958,
-      sha256: "521e7623b1c72d7729e11c9eb8f02670701446f93f410e0afc82cbd90b8b1738",
+      bytes: 4009,
+      sha256: "fc7907ce0735c44752fb2e9641358d54d9e75554355526591a51c0d3a5b2e390",
       mutable: false
     },
     "motion.css": {
@@ -168,6 +170,11 @@ var release_manifest_default = {
     "packets.css": {
       bytes: 6940,
       sha256: "379dc82440867f943fc8983d1976fba67cbe98b677398201995d9e3470a0b464",
+      mutable: false
+    },
+    "showcase.css": {
+      bytes: 6893,
+      sha256: "ea7b6d3d25e5795af08e2cb0f72ccc3884d565fe4c278dcb1fd32753773287a8",
       mutable: false
     },
     "skill/parley.mjs": {
@@ -207,12 +214,12 @@ var release_manifest_default = {
     independentReviewInherited: false,
     frontendReadOnly: true,
     statistics: "Collector snapshot; freshness checked at display and publication time.",
-    demo: "Fictional examples are opt-in via demo=1 and are never live acceptance evidence.",
+    demo: "Inline fictional examples are isolated and labeled, never executable or counted as live activity. Legacy demo=1 remains explicitly fictional.",
     packetPresentation: "Gift surfaces omit monetary amounts. Existing contract payouts remain fixed-share, not random."
   }
 };
 
-// work/parley-publication/ui-site-release.mjs
+// ui-site-release.mjs
 var publicFiles = Object.freeze(Object.keys(release_manifest_default.files).sort());
 function httpsOrigin(input) {
   const url = new URL(input);
@@ -242,7 +249,7 @@ function validateSiteManifest(manifest) {
   }
 }
 
-// outputs/parley-production-activation-2026-11-27-r1/application/scripts/publication-plan.mjs
+// ../../outputs/parley-production-activation-2026-11-27-r1/application/scripts/publication-plan.mjs
 function inspectPublication({
   root,
   manifest,
@@ -346,7 +353,7 @@ function writePublication(directory, prepared) {
   }
 }
 
-// work/parley-production-activation/closeout/archive.mjs
+// ../parley-production-activation/closeout/archive.mjs
 import assert3 from "node:assert/strict";
 import fs2 from "node:fs";
 import path2 from "node:path";
@@ -508,7 +515,7 @@ if (process.argv[1] && path2.basename(process.argv[1]) === "archive.mjs" && path
   console.log(JSON.stringify(mode === "create" ? createArchive(source, directory) : verifyArchive(source), null, 2));
 }
 
-// work/parley-production-activation/closeout/publisher.mjs
+// ../parley-production-activation/closeout/publisher.mjs
 var target = Object.freeze({
   accountId: "1d467133217d2828cc677d7e8b5d1306",
   project: "parley-staging",
